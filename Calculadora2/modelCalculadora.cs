@@ -541,20 +541,22 @@ namespace calculadora
         }//fim do ex16
 
         //Exercicio 17
-        public double CalcularCustoFinal(double custoFabrica)
+        public string CustoDoCarro()
         {
-            double porcentagemDistribuidor = 0.28;
-            double porcentagemImpostos = 0.45;
+            double percenDoDistri = 0.28;
+            double imposto = 0.45;
+            double custoFabri = 0;
+            string msg = "";
+            double conta = 0;
 
-            double custoDistribuidor = custoFabrica * porcentagemDistribuidor;
-            double custoImpostos = custoFabrica * porcentagemImpostos;
-            double custoFinal = custoFabrica + custoDistribuidor + custoImpostos;
+            Console.WriteLine("Informe o custo de fábrica do carro: ");
+            custoFabri = Convert.ToInt32(Console.ReadLine());
 
-            return custoFinal;
+            conta = ((custoFabri * percenDoDistri) + custoFabri) + ((custoFabri * imposto) + custoFabri);
+
+            msg = "O custo final para o consumidor é de: " + "R$" + conta + ",00" + " reais";
+            return msg;
         }//fim do ex17
-
-
-
 
     }//fim da classe
 }//fim do projeto
