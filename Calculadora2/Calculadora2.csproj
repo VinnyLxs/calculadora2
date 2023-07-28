@@ -44,7 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ControlCalculadora.cs" />
-    <Compile Include="modelCalculadora.cs" />
+    <Compile Include="..\..\CalculadoraViny\modelCalculadora.cs">
+      <Link>modelCalculadora.cs</Link>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

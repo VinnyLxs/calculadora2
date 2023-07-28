@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -59,6 +60,16 @@ namespace calculadora
                               "\n20. Ex8"                                  +
                               "\n21. Ex9"                                  +
                               "\n22. Ex10"                                 +
+                              "\n23. Ex11"                                 +
+                              "\n24. Ex12"                                 +                                              
+                              "\n25. Ex13"                                 +
+                              "\n26. Ex14"                                 +
+                              "\n27. Ex15"                                 +
+                              "\n28. Ex16"                                 +
+                              "\n29. Ex17"                                 +
+                              "\n30. Ex18"                                 +
+                              "\n31. Ex19"                                 +
+                              "\n32. Ex20"                                 +
                               "\n\nEscolha uma das opções acima: ");
             int opcao = Convert.ToInt32(Console.ReadLine());
             return opcao;
@@ -227,10 +238,97 @@ namespace calculadora
                         Console.WriteLine("Soma dos números até digitar 0: " + this.calculadora.SomaAteZero());
                         break;
 
+                    //ex10
                     case 22:
                         double media = this.calculadora.MediaParesAteZero();
                         if (media != 0)
                             Console.WriteLine("Média dos números pares: " + media);
+                        break;
+
+                    //ex11
+                    case 23:
+                        var (maior, menor) = this.calculadora.EncontrarMaiorEMenorAteZero();
+                        Console.WriteLine("Maior valor: " + maior);
+                        Console.WriteLine("Menor valor: " + menor);
+                        break;
+
+                    //ex12
+                    case 24:
+                        var (somaPositivos, quantidadeNegativos) = this.calculadora.CalcularSomaPositivosEContarNegativos();
+                        Console.WriteLine("Soma dos números positivos: " + somaPositivos);
+                        Console.WriteLine("Quantidade de valores negativos: " + quantidadeNegativos);
+                        break;
+
+                    //ex13
+                    case 25:
+                        Console.Write("Digite um número inteiro não negativo: ");
+                        int numero = Convert.ToInt32(Console.ReadLine());
+
+                        try
+                        {
+                            long fatorial = this.calculadora.CalcularFatorial(numero);
+                            Console.WriteLine($"{numero}! = {fatorial}");
+                        }
+                        catch (ArgumentException ex)
+                        {
+                            Console.WriteLine("Erro: " + ex.Message);
+                        }
+                        break;
+
+                    //ex14
+                    case 26:
+                        Console.Write("Digite o número de jogadores do time: ");
+                        int numeroJogadores = Convert.ToInt32(Console.ReadLine());
+
+                        try
+                        {
+                            double alturaMedia = this.calculadora.CalcularAlturaMediaTime(numeroJogadores);
+                            Console.WriteLine($"Altura média do time: {alturaMedia:F2} metros");
+                        }
+                        catch (ArgumentException ex)
+                        {
+                            Console.WriteLine("Erro: " + ex.Message);
+                        }
+                        break;
+
+                    //ex15
+                    case 27:
+                        string[] nomes = new string[16];
+                        double[] notas = new double[16];
+
+                        for (int i = 0; i < 16; i++)
+                        {
+                            Console.Write($"Digite o nome da candidata {i + 1}: ");
+                            nomes[i] = Console.ReadLine();
+
+                            Console.Write($"Digite a nota da candidata {i + 1} (0 a 10): ");
+                            notas[i] = Convert.ToDouble(Console.ReadLine());
+
+                            if (notas[i] < 0 || notas[i] > 10)
+                            {
+                                Console.WriteLine("Nota inválida. Digite uma nota entre 0 e 10.");
+                                i--; 
+                            }
+                        }
+
+                        try
+                        {
+                            (string nomeVencedora, double notaVencedora) = this.calculadora.EncontrarVencedora(nomes, notas);
+                            Console.WriteLine($"Vencedora: {nomeVencedora}, Nota: {notaVencedora:F2}");
+                        }
+                        catch (ArgumentException ex)
+                        {
+                            Console.WriteLine("Erro: " + ex.Message);
+                        }
+                        break;
+
+                    //ex16
+                    case 28:
+                        Console.WriteLine(this.calculadora.VotosMunicipio());
+                        break;  
+
+                    case 29:
+                        Console.WriteLine(this.calculadora.CustoDoCarro());
                         break;
 
                 }//fim do switch

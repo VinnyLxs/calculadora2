@@ -7,7 +7,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace calculadora
+namespace calculadora 
 {
     class ModelCalculadora
     {
@@ -224,6 +224,8 @@ namespace calculadora
             }
         }//fim do bhaskara
 
+        ////Grande parte dos exercicios aprendi pelo youtube com alguns jeitos diferentes de se fazer
+
         //Exercicio 1
 
         public (int, int) Exc1(int num)
@@ -388,6 +390,171 @@ namespace calculadora
             double media = (double)soma / quantidadePares;
             return media;
         }//fim do ex10
+
+        //Exercicio 11
+        public (int, int) EncontrarMaiorEMenorAteZero()
+        {
+            int maior = int.MinValue;
+            int menor = int.MaxValue;
+
+            Console.WriteLine("Digite números inteiros (digite 0 para parar):");
+
+            while (true)
+            {
+                int num = Convert.ToInt32(Console.ReadLine());
+                if (num == 0)
+                    break;
+
+                if (num > maior)
+                    maior = num;
+
+                if (num < menor)
+                    menor = num;
+            }
+
+            return (maior, menor);
+        }//fim do ex11
+
+        //Exercicio 12
+        public (int, int) CalcularSomaPositivosEContarNegativos()
+        {
+            int somaPositivos = 0;
+            int quantidadeNegativos = 0;
+
+            Console.WriteLine("Digite 20 números inteiros:");
+
+            for (int i = 1; i <= 20; i++)
+            {
+                Console.Write($"Número {i}: ");
+                int num = Convert.ToInt32(Console.ReadLine());
+
+                if (num > 0)
+                    somaPositivos += num;
+
+                if (num < 0)
+                    quantidadeNegativos++;
+            }
+
+            return (somaPositivos, quantidadeNegativos);
+        }//fim do ex12
+
+        //Exercicio 13  
+        public long CalcularFatorial(int numero)
+        {
+            if (numero < 0)
+                throw new ArgumentException("O número não pode ser negativo.");
+
+            if (numero == 0 || numero == 1)
+                return 1;
+
+            long fatorial = 1;
+            for (int i = 2; i <= numero; i++)
+            {
+                fatorial *= i;
+            }
+
+            return fatorial;
+        }//fim do ex13
+
+        //Exercicio 14
+        public double CalcularAlturaMediaTime(int numeroJogadores)
+        {
+            if (numeroJogadores <= 0)
+                throw new ArgumentException("O número de jogadores deve ser maior que zero.");
+
+            double somaAlturas = 0;
+            for (int i = 1; i <= numeroJogadores; i++)
+            {
+                Console.Write($"Digite a altura do jogador {i} (em metros): ");
+                double altura = Convert.ToDouble(Console.ReadLine());
+                somaAlturas += altura;
+            }
+
+            double alturaMedia = somaAlturas / numeroJogadores;
+            return alturaMedia;
+        }//fim do ex14
+
+        //Exercicio 15
+        public (string nome, double nota) EncontrarVencedora(string[] nomes, double[] notas)
+        {
+            if (nomes.Length != notas.Length || nomes.Length == 0)
+                throw new ArgumentException("A quantidade de nomes e notas deve ser igual e maior que zero.");
+
+            int indiceVencedora = 0;
+            double maiorNota = notas[0];
+
+            for (int i = 1; i < notas.Length; i++)
+            {
+                if (notas[i] > maiorNota)
+                {
+                    maiorNota = notas[i];
+                    indiceVencedora = i;
+                }
+            }
+
+            return (nomes[indiceVencedora], maiorNota);
+        }//fim do ex15
+
+        //Exercicio 16
+        public string VotosMunicipio()
+        {
+            double numeroTotal = 0;
+            double numeroVB = 0;
+            double numeroVN = 0;
+            double numeroVV = 0;
+            string msg = "";
+            double contaVB = 0;
+            double contaVN = 0;
+            double contaVV = 0;
+            double soma = 0;
+
+            Console.WriteLine("Informe o número total de eleitores: ");
+            numeroTotal = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Informe o número de votos em branco: ");
+            numeroVB = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Informe o número de votos nulos: ");
+            numeroVN = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Informe o número de votos válidos: ");
+            numeroVV = Convert.ToInt32(Console.ReadLine());
+
+            soma = numeroVB + numeroVN + numeroVV;
+            do
+            {
+                if (soma > numeroTotal)
+                {
+                    Console.WriteLine("Informe um número menor de votos do que o número de eleitores");
+                }
+
+            } while (soma != numeroTotal);
+
+            contaVB = (numeroVB * 100) / numeroTotal;
+            contaVN = (numeroVN * 100) / numeroTotal;
+            contaVV = (numeroVV * 100) / numeroTotal;
+
+            msg = "O percentual de votos em Branco é de: " + contaVB + "%" +
+                  "\nO percentual de votos Nulos é de: " + contaVN + "%" +
+                  "\nO percentual de votos Válidos é de: " + contaVV + "%";
+            return msg;
+        }//fim do ex16
+
+        //Exercicio 17
+        public double CalcularCustoFinal(double custoFabrica)
+        {
+            double porcentagemDistribuidor = 0.28;
+            double porcentagemImpostos = 0.45;
+
+            double custoDistribuidor = custoFabrica * porcentagemDistribuidor;
+            double custoImpostos = custoFabrica * porcentagemImpostos;
+            double custoFinal = custoFabrica + custoDistribuidor + custoImpostos;
+
+            return custoFinal;
+        }//fim do ex17
+
+
+
 
     }//fim da classe
 }//fim do projeto
