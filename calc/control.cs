@@ -94,11 +94,15 @@ namespace calc
             {
                 txtResultado.Text = Convert.ToString(valor1 + valor2);
             }
-            else if (operacao == "SUB")
+            else 
+            
+            if (operacao == "SUB")
             {
                 txtResultado.Text = Convert.ToString(valor1 - valor2);
             }
-            else if (operacao == "MULT")
+            else 
+            
+            if (operacao == "MULT")
             {
                 txtResultado.Text = Convert.ToString(valor1 * valor2);
             }
@@ -106,8 +110,15 @@ namespace calc
             {
                 txtResultado.Text = Convert.ToString(valor1 / valor2);
             }
+            if (operacao != "Raiz")
+            
+            {
+                txtResultado.Text = Convert.ToString(valor1 );
+            }
+            else
+            {
 
-
+            }
         }//=
 
         private void button13_Click(object sender, EventArgs e)
@@ -143,11 +154,19 @@ namespace calc
             valor2 = 0;
         }//C
 
+        private void button20_Click(object sender, EventArgs e)
+        {
+            valor1 = decimal.Parse(txtResultado.Text, CultureInfo.InvariantCulture);
+            txtResultado.Text = "";
+            operacao = "Raiz";
+
+        }//raiz quadrada
+
         private void button19_Click(object sender, EventArgs e)
         {
             valor1 = decimal.Parse(txtResultado.Text, CultureInfo.InvariantCulture);
             txtResultado.Text = "";
             operacao = "Potencia";
-        }
+        }// potencia
     }
 }

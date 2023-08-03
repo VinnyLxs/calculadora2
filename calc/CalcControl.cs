@@ -1,32 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web;
-using System.Windows.Forms;
 
 namespace calc
 {
-    public partial class Form1 : Form
+    class CalcControl
     {
-        decimal valor1 = 0;
-        decimal valor2 = 0;
-        string operacao = "";
-        public Form1()
-        {
-            InitializeComponent();
-        }
-
         private void button9_Click(object sender, EventArgs e)
         {
             txtResultado.Text = txtResultado.Text + "0";
         }//0
-
         private void button10_Click(object sender, EventArgs e)
         {
             txtResultado.Text = txtResultado.Text + "1";
@@ -83,33 +68,6 @@ namespace calc
             txtResultado.Text = "";
             operacao = "SOMA";
         }//+
-
-        private void button18_Click(object sender, EventArgs e)
-        {
-            valor2 = decimal.Parse(txtResultado.Text, CultureInfo.InvariantCulture);
-
-
-
-            if (operacao == "SOMA")
-            {
-                txtResultado.Text = Convert.ToString(valor1 + valor2);
-            }
-            else if (operacao == "SUB")
-            {
-                txtResultado.Text = Convert.ToString(valor1 - valor2);
-            }
-            else if (operacao == "MULT")
-            {
-                txtResultado.Text = Convert.ToString(valor1 * valor2);
-            }
-            else
-            {
-                txtResultado.Text = Convert.ToString(valor1 / valor2);
-            }
-
-
-        }//=
-
         private void button13_Click(object sender, EventArgs e)
         {
             valor1 = decimal.Parse(txtResultado.Text, CultureInfo.InvariantCulture);
@@ -143,11 +101,19 @@ namespace calc
             valor2 = 0;
         }//C
 
+        private void button20_Click(object sender, EventArgs e)
+        {
+            valor1 = decimal.Parse(txtResultado.Text, CultureInfo.InvariantCulture);
+            txtResultado.Text = "";
+            operacao = "Raiz";
+
+        }//raiz quadrada
+
         private void button19_Click(object sender, EventArgs e)
         {
             valor1 = decimal.Parse(txtResultado.Text, CultureInfo.InvariantCulture);
             txtResultado.Text = "";
             operacao = "Potencia";
-        }
+        }// potencia
     }
 }
